@@ -35,13 +35,12 @@ RUN cd /tmp \
         && mv /usr/local/bin/trf${TRF_VERSION}.linux64 /usr/local/bin/trf \
         && chmod +x /usr/local/bin/trf
 
-RUN wget -nv http://www.repeatmasker.org/RepeatMasker-open-$(echo $RM_VERSION | sed -e 's/\./\-/g').tar.gz \
+RUN cd /tmp \
+        && wget -nv http://www.repeatmasker.org/RepeatMasker-open-$(echo $RM_VERSION | sed -e 's/\./\-/g').tar.gz \
         && cp RepeatMasker-open-$(echo $RM_VERSION | sed -e 's/\./\-/g').tar.gz /usr/local/ \
         && cd /usr/local/ \
-        && gunzip RepeatMasker-open-$(echo $RM_VERSION | sed -e 's/\./\-/g').tar.gz \
-        && tar xvf RepeatMasker-open-$(echo $RM_VERSION | sed -e 's/\./\-/g').tar \
-        && cd / \
-        && rm RepeatMasker-open-$(echo $RM_VERSION | sed -e 's/\./\-/g').tar
+        && tar zxf RepeatMasker-open-$(echo $RM_VERSION | sed -e 's/\./\-/g').tar \
+        && rm RepeatMasker-open-$(echo $RM_VERSION | sed -e 's/\./\-/g').tar.gz
 
 RUN ln -s /usr/local/RepeatMasker/RepeatMasker /usr/local/bin/RepeatMasker
 
