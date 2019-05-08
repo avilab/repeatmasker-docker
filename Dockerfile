@@ -13,7 +13,7 @@ RUN apt-get update \
         && apt-get install -y --no-install-recommends wget build-essential locales
 
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
-        && ocale-gen en_US.utf8 \
+        && locale-gen en_US.utf8 \
         && /usr/sbin/update-locale LANG=en_US.UTF-8
 
 ENV LC_ALL=en_US.UTF-8 \
