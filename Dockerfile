@@ -48,8 +48,7 @@ RUN cp /tmp/RepBaseRepeatMaskerEdition-${REPBASE_VER}.tar.gz /usr/local/RepeatMa
         && tar zxf RepBaseRepeatMaskerEdition-${REPBASE_VER}.tar.gz \
         && rm RepBaseRepeatMaskerEdition-${REPBASE_VER}.tar.gz
 
-RUN rm configure \
-        && wget -nv --no-check-certificate https://raw.githubusercontent.com/rmhubley/RepeatMasker/master/configure \
+RUN cd /usr/local/RepeatMasker \
         && perl ./configure --trfbin=/usr/local/bin/trf --rmblastbin=/usr/local/rmblast-${RMB_VERSION}/
   
 RUN /usr/local/bin/RepeatMasker /tmp/small-1.fa
