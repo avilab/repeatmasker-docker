@@ -39,14 +39,14 @@ RUN cd /tmp \
         && wget -nv http://www.repeatmasker.org/RepeatMasker-open-$(echo $RM_VERSION | sed -e 's/\./\-/g').tar.gz \
         && cp RepeatMasker-open-$(echo $RM_VERSION | sed -e 's/\./\-/g').tar.gz /usr/local/ \
         && cd /usr/local/ \
-        && tar zxf RepeatMasker-open-$(echo $RM_VERSION | sed -e 's/\./\-/g').tar \
+        && tar zxvf RepeatMasker-open-$(echo $RM_VERSION | sed -e 's/\./\-/g').tar.gz \
         && rm RepeatMasker-open-$(echo $RM_VERSION | sed -e 's/\./\-/g').tar.gz
 
 RUN ln -s /usr/local/RepeatMasker/RepeatMasker /usr/local/bin/RepeatMasker
 
 RUN cp /tmp/RepBaseRepeatMaskerEdition-${REPBASE_VER}.tar.gz /usr/local/RepeatMasker \
         && cd /usr/local/RepeatMasker \
-        && tar zxf RepBaseRepeatMaskerEdition-${REPBASE_VER}.tar.gz \
+        && tar zxvf RepBaseRepeatMaskerEdition-${REPBASE_VER}.tar.gz \
         && rm RepBaseRepeatMaskerEdition-${REPBASE_VER}.tar.gz
 
 RUN cd /usr/local/RepeatMasker \
