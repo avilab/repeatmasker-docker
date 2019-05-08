@@ -26,7 +26,8 @@ RUN wget -O - http://cpanmin.us | perl - --self-upgrade \
 RUN cd /tmp \
         && wget -nv http://www.repeatmasker.org/rmblast-${RMB_VERSION}+-x64-linux.tar.gz \
         && cd /usr/local \
-        && tar zxvf /tmp/rmblast-${RMB_VERSION}+-x64-linux.tar.gz
+        && tar zxvf /tmp/rmblast-${RMB_VERSION}+-x64-linux.tar.gz \
+        && sudo ln -s /lib/x86_64-linux-gnu/libpcre.so.3 /lib/x86_64-linux-gnu/libpcre.so.0
 
 RUN cd /tmp \
         && wget -nv http://tandem.bu.edu/trf/downloads/trf${TRF_VERSION}.linux64 \
@@ -39,6 +40,7 @@ RUN wget -nv http://www.repeatmasker.org/RepeatMasker-open-$(echo $RM_VERSION | 
         && cd /usr/local/ \
         && gunzip RepeatMasker-open-$(echo $RM_VERSION | sed -e 's/\./\-/g').tar.gz \
         && tar xvf RepeatMasker-open-$(echo $RM_VERSION | sed -e 's/\./\-/g').tar \
+        && cd / \
         && rm RepeatMasker-open-$(echo $RM_VERSION | sed -e 's/\./\-/g').tar
 
 RUN ln -s /usr/local/RepeatMasker/RepeatMasker /usr/local/bin/RepeatMasker
