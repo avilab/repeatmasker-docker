@@ -1,4 +1,4 @@
-FROM docker/debian:stretch
+FROM debian:stretch
 
 COPY RepBaseRepeatMaskerEdition-20181026.tar.gz /tmp
 COPY test/seqs/small-1.fa /tmp
@@ -12,11 +12,13 @@ ARG REPBASE_VER=20181026
 RUN apt-get update \
         && apt-get install -y --no-install-recommends wget build-essential locales
 
-RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
-RUN locale-gen en_US.utf8
-RUN /usr/sbin/update-locale LANG=en_US.UTF-8
-ARG LC_ALL=en_US.UTF-8
-ARG LANG=en_US.UTF-8
+RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
+        && ocale-gen en_US.utf8 \
+        && /usr/sbin/update-locale LANG=en_US.UTF-8
+
+ENV LC_ALL=en_US.UTF-8 \
+    LANG=en_US.UTF-8 \
+    TERM=xterm
 
 RUN wget -O - http://cpanmin.us | perl - --self-upgrade \
         && cpanm Text::Soundex
@@ -59,4 +61,4 @@ RUN cd / \
         && apt-get autoclean -y \
         && rm -rf /var/lib/apt/lists/* 
 
-CMD /usr/local/RepeatMasker/RepeatMasker "${@}"
+CMD ["/usr/local/bin/RepeatMasker"]
