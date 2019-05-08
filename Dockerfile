@@ -27,7 +27,7 @@ RUN cd /tmp \
         && wget -nv http://www.repeatmasker.org/rmblast-${RMB_VERSION}+-x64-linux.tar.gz \
         && cd /usr/local \
         && tar zxvf /tmp/rmblast-${RMB_VERSION}+-x64-linux.tar.gz \
-        && sudo ln -s /lib/x86_64-linux-gnu/libpcre.so.3 /lib/x86_64-linux-gnu/libpcre.so.0
+        && ln -s /lib/x86_64-linux-gnu/libpcre.so.3 /lib/x86_64-linux-gnu/libpcre.so.0
 
 RUN cd /tmp \
         && wget -nv http://tandem.bu.edu/trf/downloads/trf${TRF_VERSION}.linux64 \
