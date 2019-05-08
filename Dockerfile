@@ -4,7 +4,7 @@ COPY RepBaseRepeatMaskerEdition-20181026.tar.gz /tmp
 COPY test/seqs/small-1.fa /tmp
 COPY test/seqs/small-2.fa /tmp
 
-ARG RM_VERSION=4.0.9p2
+ARG RM_VERSION=4.0.9.p2
 ARG RMB_VERSION=2.9.0
 ARG TRF_VERSION=409
 ARG REPBASE_VER=20181026
