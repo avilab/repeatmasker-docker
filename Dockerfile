@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM continuumio/miniconda3:latest
 
 COPY RepBaseRepeatMaskerEdition-20181026.tar.gz /tmp
 COPY test/seqs/small-1.fa /tmp
@@ -10,7 +10,7 @@ ARG TRF_VERSION=409
 ARG REPBASE_VER=20181026
 
 RUN apt-get update \
-        && apt-get install -y --no-install-recommends wget build-essential locales
+        && apt-get install -y --no-install-recommends build-essential locales
 
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
         && locale-gen en_US.utf8 \
